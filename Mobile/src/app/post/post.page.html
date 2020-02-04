@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Catbook - Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<img id='imageDisplay' src="">
+
+  <div *ngIf='post === null'>
+    <form [formGroup]='post_form' (ngSubmit)='addPost()'>
+      <ion-item>
+        <ion-label position='floating'>Link da Imagem</ion-label>
+        <ion-input id='imageInput' type='text' name='image' formControlName='image' (keyup)='updateImage()'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position='floating'>Descrição</ion-label>
+        <ion-textarea name='description' formControlName='description'></ion-textarea>
+      </ion-item>
+      <ion-button slot='end' type="submit">Submit</ion-button>
+    </form>
+  </div>
+
+  <div *ngIf='post !== null'>
+    <img src="{{post?.image}}">
+    <p>{{post?.description}}</p>
+  </div>
+
+</ion-content>
